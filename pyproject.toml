@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sr-design"
+version = "0.1.0"
+description = "Senior design project"
+readme = "README.md"
+requires-python = ">=3.6"
+dependencies = [
+    # Add your required packages here, e.g.:
+    # "numpy",
+    # "matplotlib",
+    # "scipy",
+]
