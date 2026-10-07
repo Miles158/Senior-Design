@@ -5,12 +5,16 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "sr-design"
 version = "0.1.0"
-description = "Senior design project"
+description = "Outer Space"
 readme = "README.md"
-requires-python = ">=3.6"
+requires-python = ">=3.10"
 dependencies = [
-    # Add your required packages here, e.g.:
-    # "numpy",
-    # "matplotlib",
-    # "scipy",
+    "torch==2.14.*",
+    "numpy",
+    "h5py",
+    "scikit-learn",
+    "matplotlib",
 ]
+
+[tool.setuptools.packages.find]
+where = ["src"]
