@@ -33,7 +33,6 @@ for scheme in constellation.CONSTELLATIONS:
     symbols = constellation.encode(bits_to_send, scheme)
 
     received_bits = constellation.demodulate(symbols, const)
-    print(f"{scheme}: errors with no noise = {np.sum(bits_to_send != received_bits)} (should be 0)")
 
     ber_list = []
     for snr in snrs:

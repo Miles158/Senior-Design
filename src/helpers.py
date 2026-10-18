@@ -1,19 +1,6 @@
 import numpy as np
 
 
-def add_white_noise(signal, snr_db, rng):
-    signal_power = np.mean(np.abs(signal) ** 2)
-    noise_power = signal_power / 10 ** (snr_db / 10)
-    if np.iscomplexobj(signal):
-        # complex baseband: split noise power evenly between I and Q
-        sigma = np.sqrt(noise_power / 2)
-        noise = rng.normal(0, sigma, len(signal)) + 1j * rng.normal(0, sigma, len(signal))
-    else:
-        noise = rng.normal(0, np.sqrt(noise_power), len(signal))
-    return signal + noise
-
-
-
 
 def bpsk_modulate(symbols, freq, samples_per_bit, sample_rate):
     """
