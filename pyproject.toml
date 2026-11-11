@@ -14,6 +14,9 @@ dependencies = [
     "h5py",
     "scikit-learn",
     "matplotlib",
+    "sionna",
+    "gymnasium",
+    "stable-baselines3",
 ]
 
 [tool.setuptools.packages.find]
