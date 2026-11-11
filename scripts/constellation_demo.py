@@ -4,6 +4,7 @@ from scipy.special import erfc
 
 from src import helpers
 from src import constellation
+from src import channel
 
 rng = np.random.default_rng()
 num_symbols = 100000  # symbols to send for each scheme
@@ -25,7 +26,7 @@ def theory_ber(scheme, snr_db):
 
 plt.figure(figsize=(12, 6))
 
-for scheme in constellation.CONSTELLATIONS:
+for scheme in constellation.C3ONSTELLATIONS:
     const = constellation.CONSTELLATIONS[scheme]
     num_bits = num_symbols * constellation.bits_per_symbol(const)
     bits_to_send = rng.integers(0, 2, size=num_bits)
@@ -36,7 +37,7 @@ for scheme in constellation.CONSTELLATIONS:
 
     ber_list = []
     for snr in snrs:
-        noisy_symbols = helpers.add_white_noise(symbols, snr_db=snr, rng=rng)
+        noisy_symbols = channel.add_white_noise(symbols, snr_db=snr, rng=rng)
         received_bits = constellation.demodulate(noisy_symbols, const)
 
         bit_errors = np.sum(bits_to_send != received_bits)
@@ -48,7 +49,7 @@ for scheme in constellation.CONSTELLATIONS:
     plt.semilogy(snrs, ber_list, 'o', label=scheme)  
     plt.semilogy(snrs, theory_ber(scheme, snrs), 'k--')
 
-plt.title('BER vs SNR (dots = simulation, dashed = theory)')
+plt.title('BER vs SNR. Lines are theory')
 plt.xlabel('Es/N0 (dB)')
 plt.ylabel('Bit Error Rate (BER)')
 plt.ylim(1e-6, 1)
