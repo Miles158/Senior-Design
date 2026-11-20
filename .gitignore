@@ -1,7 +1,7 @@
 # add stuff below. 
 myenv/
 setup_env.sh
-
+*.png
 
 
 # Byte-compiled / optimized / DLL files
